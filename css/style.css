@@ -62,7 +62,7 @@ fieldset {
   padding: 0;
   border: none;
 }
-.visualy-hidden {
+.visually-hidden {
   position: fixed;
   transform: scale(0);
 }
