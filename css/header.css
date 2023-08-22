@@ -1,0 +1,30 @@
+.header {
+  padding: 40px 0;
+}
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.header__logo {
+  width: 137px;
+}
+.header__link {
+  padding: 10px 30px;
+  background-color: #A6ADFF;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  font-size: 20px;
+}
+.header__link:hover {
+  background-color: #2A18FF;
+  color: #fff;
+}
+.header__link:focus-visible {
+  border: 2px solid #4F58BE;
+}
+.header__link:disabled {
+  background-color: #EEEEF4;
+  cursor: no-drop;
+}
