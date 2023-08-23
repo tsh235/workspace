@@ -1,15 +1,13 @@
 .hero {
-  padding: 60px 0 50px;
+  padding: 117px 0 107px;
 }
 .hero__container {
   position: relative;
-  padding-top: 57px;
-  padding-bottom: 57px;
 }
 .hero__container::after {
   content: '';
   position: absolute;
-  top: 0;
+  top: -56px;
   right: -9px;
   width: 421px;
   height: 330px;

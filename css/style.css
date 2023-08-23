@@ -8,7 +8,9 @@
 
 html {
   position: relative;
+  overflow-x: hidden;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 *, *::before, *::after {
@@ -16,6 +18,8 @@ html {
 }
 
 body {
+  position: relative;
+  overflow-x: hidden;
   min-width: 320px;
   min-height: 100vh;
   background-color: #F3F4F8;
