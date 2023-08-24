@@ -16,15 +16,46 @@
   border-radius: 8px;
   border: 2px solid transparent;
   font-size: 20px;
+  outline: none;
+}
+.header__link:visited {
+  background-color: unset;
+  border-color: unset;
 }
 .header__link:hover {
   background-color: #2A18FF;
   color: #fff;
 }
+.header__link:focus,
 .header__link:focus-visible {
   border: 2px solid #4F58BE;
 }
 .header__link:disabled {
   background-color: #EEEEF4;
   cursor: no-drop;
+}
+
+@media (max-width: 1140px) {
+  .header {
+    padding: 32px 0 40px;
+  }
+}
+
+@media (max-width: 940px) {
+  .header {
+    padding: 24px 0 30px;
+  }
+  .header__link {
+    padding: 8px 23px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .header {
+    padding: 24px 0 20px;
+  }
+  .header__link {
+    display: none;
+  }
 }

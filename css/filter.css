@@ -83,10 +83,39 @@
   background-color: #2A18FF;
   color: #fff;
 }
+.filter__btn:focus,
 .filter__btn:focus-visible {
   border-color: #4F58BE;
 }
 .filter__btn:disabled {
   background-color: #EEEEF4;
   cursor: no-drop;
+}
+
+@media (max-width: 940px) {
+  .filter__title {
+    position: fixed;
+    transform: scale(0);
+  }
+  .filter__input {
+    width: 140px;
+  }
+  .filter__checkboxes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 180px);
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .filter__btn {
+    max-width: 125px;
+  }
+  .filter__reset {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .filter__form {
+    gap: 24px;
+  }
 }

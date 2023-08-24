@@ -4,10 +4,13 @@
 }
 .choices__inner {
   background-color: #fff;
-  padding: 6px 16px 1px;
+  padding: 7px 16px 1px;
   min-height: 32px;
   border: 1px solid transparent;
   border-radius: 4px;
+}
+.choices[data-type*=select-one] .choices__inner {
+  padding-bottom: 0;
 }
 .choices__list--single {
   padding: 0;

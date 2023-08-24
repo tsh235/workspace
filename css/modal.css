@@ -13,15 +13,6 @@
   margin: auto;
   cursor: default;
 }
-.modal__body::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 150px;
-  height: 150px;
-  background-image: url(../img/modal-pic.png);
-}
 .modal__close {
   position: absolute;
   top: 12px;
@@ -42,4 +33,10 @@
 }
 .modal__close:focus-visible {
   outline-color: #A6ADFF;
+}
+
+@media (max-width: 640px) {
+  .modal {
+    padding: 15px;
+  }
 }

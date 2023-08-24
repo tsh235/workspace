@@ -25,6 +25,7 @@ body {
   background-color: #F3F4F8;
   font-family: Inter, sans-serif;
   font-size: 14px;
+  font-weight: 400;
   line-height: 1.2;
   color: #171717;
   text-rendering: optimizeSpeed;
@@ -87,4 +88,22 @@ input[type=number] {
 }
 .blue-text {
   color: #2A18FF;
+}
+
+@media (max-width: 1140px) {
+  .container {
+    --width: 880px;
+  }
+}
+
+@media (max-width: 940px) {
+  .container {
+    --width: 680px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    --padding: 15px;
+  }
 }
