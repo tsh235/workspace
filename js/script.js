@@ -41,7 +41,6 @@ const createCards = (data) =>
   });
 
 const renderVacancies = (data) => {
-  console.log('data: ', data);
   cardsList.textContent = '';
   const cards = createCards(data);
   cardsList.append(...cards);
@@ -54,7 +53,6 @@ const renderVacancies = (data) => {
 };
 
 const renderMoreVacancies = (data) => {
-  console.log('data: ', data);
   const cards = createCards(data);
   cardsList.append(...cards);
   
