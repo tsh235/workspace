@@ -1,5 +1,7 @@
 .vacancies {
   padding: 50px 0;
+  position: relative;
+  z-index: 3;
 }
 .vacancies__container {
   display: flex;
@@ -43,9 +45,10 @@
     width: 20px;
     height: 20px;
     background: url(../img/arrow-down-filter.svg) no-repeat center;
+    transition: transform 0.3s;
   }
   .vacancies__filter-btn--active::after {
-    background: url(../img/arrow-up-filter.svg) no-repeat center;
+    transform: rotate(180deg) translateY(-3px);
   }
   .vacancies__filter {
     width: 100%;

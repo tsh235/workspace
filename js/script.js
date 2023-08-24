@@ -150,6 +150,7 @@ const openFilter = () => {
   if (openFilterBtn) {
     openFilterBtn.addEventListener('click', () => {
       vacanciesFilter.classList.toggle('vacancies__filter--active');
+      openFilterBtn.classList.toggle('vacancies__filter-btn--active');
     });
   }
 };
@@ -167,10 +168,37 @@ const init = () => {
   getData(
     `${API_URL}${LOCATION_URL}`, 
     (locationData) => {
-      const locations = locationData.map(lovation => ({
-        value: lovation,
+      const locations = locationData.map(location => ({
+        value: location,
       }));
-      cityChoices.setChoices(locations, 'value', 'label', false); // если здесь поставить true, то города с api будут заменять те, которые в html в option прописаны
+
+      cityChoices.setChoices(
+        locations,
+        'value',
+        'label',
+         false,  // если здесь поставить true, то города с api будут заменять те, которые в html в option прописаны
+      );
+
+      filterForm.addEventListener('reset', () => {
+        if (!cityChoices.config.searchEnabled) { // проверем есть ли поле для ввода города
+          cityChoices.removeActiveItems();
+          cityChoices.setChoiceByValue('');
+        } else {
+          placeholderItem = cityChoices._getTemplate( 'placeholder', 'Выбрать город' );
+          cityChoices.itemList.append(placeholderItem);
+          cityChoices.setChoices(
+            locations,
+            'value',
+            'label',
+             false,
+          );
+        }
+        
+        // после очистки формы рендерим заново полный список вакансий
+        getData(urlWithParams, renderVacancies, renderError).then(() => {
+          lastUrl = urlWithParams;
+        });
+      });
     }, 
     (err) => {
       console.log(err)

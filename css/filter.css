@@ -78,6 +78,7 @@
   border-radius: 4px;
   border: 2px solid transparent;
   background: #A6ADFF;
+  line-height: 1;
 }
 .filter__btn:hover {
   background-color: #2A18FF;
