@@ -48,6 +48,7 @@
   cursor: pointer;
   outline: none;
   appearance: none;
+  transition: 0.3s;
 }
 .filter__input::placeholder {
   color: #ccc;

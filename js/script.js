@@ -136,8 +136,9 @@ const observer = new IntersectionObserver(
       if (entry.isIntersecting) {
         loadMoreVacancies();
       }
-    })
-  }, {
+    });
+  }, 
+  {
     rootMargin: '100px',
   }
 );
@@ -218,9 +219,17 @@ const init = () => {
       const vacancyCard = target.closest('.vacancy');
       if (vacancyCard) {
         const vacancyId = vacancyCard.dataset.id;
-
         openModal(vacancyId);
       }
+    });
+
+    cardsList.addEventListener('keydown', ({code, target}) => {
+      const vacancyCard = target.closest('.vacancy');
+      if ((code === 'Enter' || code === 'NumpadEnter') && vacancyCard) {
+        const vacancyId = vacancyCard.dataset.id;
+        openModal(vacancyId);
+        target(blur);
+      } 
     });
 
     openFilter();
@@ -228,7 +237,6 @@ const init = () => {
     // Filter
     filterForm.addEventListener('submit', (e) => {
       e.preventDefault();
-
       const formData = new FormData(filterForm);
 
       const urlWithParams = new URL(`${API_URL}${VACANCY_URL}`);
