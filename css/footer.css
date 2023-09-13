@@ -48,8 +48,10 @@
       "logo"
       "copyright"
       "contacts";
+    gap: 16px;
   }
   .footer__contacts {
     justify-self: start;
+    padding-top: 14px;
   }
 }

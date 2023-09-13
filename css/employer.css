@@ -4,6 +4,7 @@
 .employer__title {
   margin-bottom: 50px;
   font-size: 32px;
+  letter-spacing: 0.64px;
 }
 .employer__form > * + * {
   margin-top: 32px;
@@ -93,7 +94,7 @@
 .employer__submit {
   max-width: 280px;
   width: 100%;
-  padding: 12px 32px;
+  padding: 10px 30px;
   background-color: #A6ADFF;
   border-radius: 8px;
   border: 2px solid transparent;
@@ -118,6 +119,7 @@
 }
 .employer__error {
   color: #FF0000;
+  display: none;
 }
 
 @media (max-width: 1140px) {
@@ -129,6 +131,9 @@
   }
   .employer__form > * + * {
     margin-top: 24px;
+  }
+  .employer__fieldset-input {
+    row-gap: 24px;
   }
   .employer__wrap-submit {
     margin-top: 40px;
@@ -142,10 +147,10 @@
   .employer__title {
     margin-bottom: 32px;
     font-size: 24px;
+    letter-spacing: 0.48px;
   }
   .employer__fieldset-input {
     grid-template-columns: 1fr;
-    row-gap: 24px;
   }
   .employer__radio-buttons {
     grid-template-columns: repeat(3, 220px);
@@ -156,7 +161,7 @@
   }
   .employer__submit {
     max-width: 220px;
-    padding: 10px;
+    padding: 8px 10px;
     font-size: 14px;
   }
 }
@@ -169,11 +174,12 @@
 
 @media (max-width: 640px) {
   .employer {
-    padding: 20px 0 30px;
+    padding: 20px 0 40px;
   }
   .employer__title {
     margin-bottom: 24px;
     font-size: 20px;
+    letter-spacing: 0.4px;
   }
   .employer__radio-buttons {
     grid-template-columns: 1fr;
