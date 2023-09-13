@@ -7,6 +7,14 @@
   align-items: center;
   gap: 24px;
 }
+.header__logo-link {
+  outline: 2px solid transparent;
+  border-radius: 8px;
+}
+.header__logo-link:focus,
+.header__logo-link:focus-visible {
+  outline-color: #4F58BE;
+}
 .header__logo {
   width: 137px;
 }

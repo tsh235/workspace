@@ -1,7 +1,5 @@
 .radio {
   position: relative;
-  display: block;
-  width: fit-content;
   line-height: 20px;
   padding-left: 28px;
   cursor: pointer;

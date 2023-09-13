@@ -9,16 +9,10 @@
 .employer__form > * + * {
   margin-top: 32px;
 }
-.employer__file {
-  max-width: 280px;
-}
 .employer__fieldset-input {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px 20px;
-}
-.employer__wrap-input {
-  width: 100%;
 }
 .employer__label {
   display: block;
@@ -36,7 +30,6 @@
   background: #FFF;
   cursor: pointer;
   outline: none;
-  appearance: none;
   transition: 0.3s;
 }
 .employer__input::placeholder {
@@ -62,7 +55,7 @@
   background: #FFF;
   cursor: pointer;
   outline: none;
-  transition: 0.3s;
+  transition: 0.1s;
 }
 .employer__textarea::placeholder {
   color: #ccc;
@@ -78,6 +71,11 @@
   display: grid;
   grid-template-columns: repeat(3, 280px);
   gap: 24px 20px;
+}
+.employer__fieldset-radio {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 }
 .employer__legend {
   margin-bottom: 12px;

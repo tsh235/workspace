@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Work Space - Найди работу своей мечты</title>
+  <title>Work Space - Добавить вакансию</title>
   <link rel="preload" href="./fonts/inter-regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="./index.css">
   <script src="./js/choices.min.js" defer></script>
@@ -13,7 +13,7 @@
 
   <header class="header">
     <div class="container header__container">
-      <a href="index.html"><img class="header__logo" src="./img/logo.svg" alt="Логотип WorkSpace" width="137" height="24"></a>
+      <a class="header__logo-link" href="index.html"><img class="header__logo" src="./img/logo.svg" alt="Логотип WorkSpace" width="137" height="24"></a>
       <a class="header__link" href="index.html#vacancies">Посмотреть вакансии</a>
     </div>
   </header>
@@ -31,40 +31,40 @@
 
             <div class="file__wrap-btn">
               <label class="file__label" for="logo">+ загрузить лого</label>
-              <input class="file__input" type="file" id="logo" name="logo" accept="image/png, image/jpeg">
+              <input class="file__input" type="file" id="logo" name="logo" accept="image/png, image/jpeg" required>
             </div>
           </div>
 
           <fieldset class="employer__fieldset-input">
             <div class="employer__wrap-input">
               <label class="employer__label" for="company">Название компании</label>
-              <input class="employer__input" id="company" name="company" type="text" placeholder="Например: MICROSOFT">
+              <input class="employer__input" id="company" name="company" type="text" placeholder="Например: MICROSOFT" required>
             </div>
 
             <div class="employer__wrap-input">
               <label class="employer__label" for="title">Название вакансии</label>
-              <input class="employer__input" id="title" name="title" type="text" placeholder="Например: Frontend-разработчик">
+              <input class="employer__input" id="title" name="title" type="text" placeholder="Например: Frontend-разработчик" required>
             </div>
 
             <div class="employer__wrap-input">
               <label class="employer__label" for="salary">Заработная плата, руб/мес</label>
-              <input class="employer__input" id="salary" name="salary" type="number" placeholder="80 000">
+              <input class="employer__input" id="salary" name="salary" type="number" placeholder="80 000" required>
             </div>
 
             <div class="employer__wrap-input">
               <label class="employer__label" for="location">Город</label>
-              <input class="employer__input" id="location" name="location" type="text" placeholder="Например: Москва">
+              <input class="employer__input" id="location" name="location" type="text" placeholder="Например: Москва" required>
             </div>
 
             <div class="employer__wrap-input">
               <label class="employer__label" for="email">E-mail</label>
-              <input class="employer__input" id="email" name="email" type="email" placeholder="Добавьте e-mail для связи">
+              <input class="employer__input" id="email" name="email" type="email" placeholder="Добавьте e-mail для связи" required>
             </div>
           </fieldset>
 
           <fieldset class="employer__fieldset-textarea">
             <label class="employer__label" for="description">Описание вакансии</label>
-            <textarea class="employer__textarea" name="description" id="description" placeholder="Добавьте всю необходимую для соискателя информацию"></textarea>
+            <textarea class="employer__textarea" name="description" id="description" placeholder="Добавьте всю необходимую для соискателя информацию" required></textarea>
           </fieldset>
 
           <div class="employer__radio-buttons">
