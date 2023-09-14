@@ -12,9 +12,11 @@
   background-color: #FFF;
   padding: 4px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  cursor: pointer;
+}
+.file--active .file__wrap-preview {
+  background-color: transparent;
+  min-width: auto;
 }
 .file__wrap-preview--active {
   min-width: auto;

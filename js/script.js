@@ -157,53 +157,55 @@ const openFilter = () => {
 };
 
 const init = () => {
-  const filterForm = document.querySelector('.filter__form');
+  try {
+    const filterForm = document.querySelector('.filter__form');
 
-  // Select City
-  const citySelect = document.querySelector('#city');
-  const cityChoices = new Choices(citySelect, {
-    searchEnabled: false, // если убрать строку, то в селекте можно будет искать по городам
-    itemSelectText: '',
-  });
-
-  getData(
-    `${API_URL}${LOCATION_URL}`, 
-    (locationData) => {
-      const locations = locationData.map(location => ({
-        value: location,
-      }));
-
-      cityChoices.setChoices(
-        locations,
-        'value',
-        'label',
-         false,  // если здесь поставить true, то города с api будут заменять те, которые в html в option прописаны
-      );
-
-      filterForm.addEventListener('reset', () => {
-        if (!cityChoices.config.searchEnabled) { // проверем есть ли поле для ввода города
-          cityChoices.removeActiveItems();
-          cityChoices.setChoiceByValue('');
-        } else {
-          placeholderItem = cityChoices._getTemplate( 'placeholder', 'Выбрать город' );
-          cityChoices.itemList.append(placeholderItem);
-          cityChoices.setChoices(
-            locations,
-            'value',
-            'label',
-             false,
-          );
-        }
-        
-        // после очистки формы рендерим заново полный список вакансий
-        getData(urlWithParams, renderVacancies, renderError).then(() => {
-          lastUrl = urlWithParams;
-        });
-      });
-    }, 
-    (err) => {
-      console.log(err)
+    // Select City
+    const citySelect = document.querySelector('#city');
+    const cityChoices = new Choices(citySelect, {
+      searchEnabled: false, // если убрать строку, то в селекте можно будет искать по городам
+      itemSelectText: '',
     });
+
+    getData(
+      `${API_URL}${LOCATION_URL}`, 
+      (locationData) => {
+        const locations = locationData.map(location => ({
+          value: location,
+        }));
+
+        cityChoices.setChoices(
+          locations,
+          'value',
+          'label',
+          false,  // если здесь поставить true, то города с api будут заменять те, которые в html в option прописаны
+        );
+
+        filterForm.addEventListener('reset', () => {
+          if (!cityChoices.config.searchEnabled) { // проверем есть ли поле для ввода города
+            cityChoices.removeActiveItems();
+            cityChoices.setChoiceByValue('');
+          } else {
+            placeholderItem = cityChoices._getTemplate( 'placeholder', 'Выбрать город' );
+            cityChoices.itemList.append(placeholderItem);
+            cityChoices.setChoices(
+              locations,
+              'value',
+              'label',
+              false,
+            );
+          }
+          
+          // после очистки формы рендерим заново полный список вакансий
+          getData(urlWithParams, renderVacancies, renderError).then(() => {
+            lastUrl = urlWithParams;
+          });
+        });
+      }, 
+      (err) => {
+        console.log(err)
+      }
+    );
 
     // Cards
     const urlWithParams = new URL(`${API_URL}${VACANCY_URL}`);
@@ -249,6 +251,114 @@ const init = () => {
         lastUrl = urlWithParams;
       });
     });
+  } catch (error) {
+    console.warn('Мы не на главной странице');
+  }
+
+  try {
+    const validationForm = (form) => {
+      const validate = new JustValidate(form, {
+        errorFieldCssClass: ['employer__input--error'],
+        errorsContainer: document.querySelector('.employer__error'),
+      });
+
+      validate
+        .addField('#logo', [
+          {
+            rule: 'minFilesCount',
+            value: 1,
+            errorMessage: 'Добавьте логотип',
+          },
+          {
+            rule: 'files',
+            value: {
+              files: {
+                extensions: ['jpeg', 'png', 'jpg'],
+                maxSize: 102400,
+                minSize: 1000,
+                types: ['image/jpeg', 'image/png'],
+              },
+            },
+            errorMessage: 'Размер файла должен быть не больше 100Кб',
+          }
+        ])
+        .addField('#company', [
+          {
+            rule: 'required',
+            errorMessage: 'Заполните название компании',
+          }
+        ])
+        .addField('#title', [
+          {
+            rule: 'required', 
+            errorMessage: 'Заполните название вакансии',
+          }
+        ])
+        .addField('#salary', [
+          {
+            rule: 'required', 
+            errorMessage: 'Заполните заработную плату',
+          }
+        ])
+        .addField('#location', [
+          {
+            rule: 'required', 
+            errorMessage: 'Заполните город',
+          }
+        ])
+        .addField('#email', [
+          {
+            rule: 'required',
+            errorMessage: 'Заполните email',
+          }
+        ])
+        .addField('#description', [
+          {
+            rule: 'required', 
+            errorMessage: 'Заполните описание вакансии',
+          }
+        ])
+        .addRequiredGroup('#fotmat', 'Выберите формат')
+        .addRequiredGroup('#experience', 'Выберите опыт')
+        .addRequiredGroup('#type', 'Выберите занятость');
+    };
+
+    const fileController = () => {
+      const file = document.querySelector('.file');
+      const preview = file.querySelector('.file__preview');
+      const input = file.querySelector('.file__input');
+
+      input.addEventListener('change', (event) => {
+        console.log(event.target.files);
+        if (event.target.files.length > 0) {
+          const src = URL.createObjectURL(event.target.files[0]);
+          file.classList.add('file--active');
+          preview.src = src;
+          preview.style.display = 'block';
+        } else {
+          file.classList.remove('file--active');
+          preview.src = '';
+          preview.style.display = 'none';
+        }
+      });
+    };
+
+    const formController = () => {
+      const form = document.querySelector('.employer__form');
+
+      validationForm(form);
+      
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+      });
+    };
+    
+    fileController();
+    formController();
+
+  } catch (error) {
+    console.warn('Мы не на странице работодателя');
+  }
 };
 
 init();

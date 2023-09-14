@@ -4,7 +4,7 @@
 .employer__title {
   margin-bottom: 50px;
   font-size: 32px;
-  letter-spacing: 0.64px;
+  letter-spacing: 0.02em;
 }
 .employer__form > * + * {
   margin-top: 32px;
@@ -31,6 +31,9 @@
   cursor: pointer;
   outline: none;
   transition: 0.3s;
+}
+.employer__input--error {
+  border: 1px solid #f00;
 }
 .employer__input::placeholder {
   color: #ccc;
@@ -80,6 +83,9 @@
 .employer__legend {
   margin-bottom: 12px;
 }
+.employer__legend--error {
+  color: #f00;
+}
 .employer__label-radio + .employer__label-radio {
   margin-top: 8px;
 }
@@ -117,7 +123,6 @@
 }
 .employer__error {
   color: #FF0000;
-  display: none;
 }
 
 @media (max-width: 1140px) {
@@ -145,7 +150,6 @@
   .employer__title {
     margin-bottom: 32px;
     font-size: 24px;
-    letter-spacing: 0.48px;
   }
   .employer__fieldset-input {
     grid-template-columns: 1fr;
@@ -177,7 +181,6 @@
   .employer__title {
     margin-bottom: 24px;
     font-size: 20px;
-    letter-spacing: 0.4px;
   }
   .employer__radio-buttons {
     grid-template-columns: 1fr;

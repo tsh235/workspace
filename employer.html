@@ -6,7 +6,7 @@
   <title>Work Space - Добавить вакансию</title>
   <link rel="preload" href="./fonts/inter-regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="./index.css">
-  <script src="./js/choices.min.js" defer></script>
+  <script src="./js/just-validate.min.js" defer></script>
   <script src="./js/script.js" defer></script>
 </head>
 <body>
@@ -26,7 +26,7 @@
         <form class="employer__form">
           <div class="employer__file file">
             <div class="file__wrap-preview">
-              <img class="file__preview" src="./img/vv.png" alt="#">
+              <img class="file__preview" src="" alt="">
             </div>
 
             <div class="file__wrap-btn">
@@ -38,37 +38,37 @@
           <fieldset class="employer__fieldset-input">
             <div class="employer__wrap-input">
               <label class="employer__label" for="company">Название компании</label>
-              <input class="employer__input" id="company" name="company" type="text" placeholder="Например: MICROSOFT" required>
+              <input class="employer__input" id="company" name="company" type="text" placeholder="Например: MICROSOFT">
             </div>
 
             <div class="employer__wrap-input">
               <label class="employer__label" for="title">Название вакансии</label>
-              <input class="employer__input" id="title" name="title" type="text" placeholder="Например: Frontend-разработчик" required>
+              <input class="employer__input" id="title" name="title" type="text" placeholder="Например: Frontend-разработчик">
             </div>
 
             <div class="employer__wrap-input">
               <label class="employer__label" for="salary">Заработная плата, руб/мес</label>
-              <input class="employer__input" id="salary" name="salary" type="number" placeholder="80 000" min="0" required>
+              <input class="employer__input" id="salary" name="salary" type="number" placeholder="80 000">
             </div>
 
             <div class="employer__wrap-input">
               <label class="employer__label" for="location">Город</label>
-              <input class="employer__input" id="location" name="location" type="text" placeholder="Например: Москва" required>
+              <input class="employer__input" id="location" name="location" type="text" placeholder="Например: Москва">
             </div>
 
             <div class="employer__wrap-input">
               <label class="employer__label" for="email">E-mail</label>
-              <input class="employer__input" id="email" name="email" type="email" placeholder="Добавьте e-mail для связи" required>
+              <input class="employer__input" id="email" name="email" type="email" placeholder="Добавьте e-mail для связи">
             </div>
           </fieldset>
 
           <fieldset class="employer__fieldset-textarea">
             <label class="employer__label" for="description">Описание вакансии</label>
-            <textarea class="employer__textarea" name="description" id="description" placeholder="Добавьте всю необходимую для соискателя информацию" required></textarea>
+            <textarea class="employer__textarea" name="description" id="description" placeholder="Добавьте всю необходимую для соискателя информацию"></textarea>
           </fieldset>
 
           <div class="employer__radio-buttons">
-            <fieldset class="employer__fieldset-radio">
+            <fieldset class="employer__fieldset-radio" id="fotmat">
               <legend class="employer__legend">Формат</legend>
               <label class="employer__label-radio radio">
                 <input class="radio__input" name="format" type="radio" value="Офис">Офис
@@ -81,7 +81,7 @@
               </label>
             </fieldset>
 
-            <fieldset class="employer__fieldset-radio">
+            <fieldset class="employer__fieldset-radio" id="experience">
               <legend class="employer__legend">Опыт работы</legend>
               <label class="employer__label-radio radio">
                 <input class="radio__input" name="experience" type="radio" value="Не важно">Не важно
@@ -97,7 +97,7 @@
               </label>
             </fieldset>
 
-            <fieldset class="employer__fieldset-radio">
+            <fieldset class="employer__fieldset-radio" id="type">
               <legend class="employer__legend">Занятость</legend>
               <label class="employer__label-radio radio">
                 <input class="radio__input" name="type" type="radio" value="Полная занятость">Полная занятость
@@ -116,9 +116,7 @@
           
           <div class="employer__wrap-submit">
             <button class="employer__submit" type="submit">Добавить вакансию</button>
-            <div class="employer__error">
-              <p>Ошибка. Заполните все поля</p>
-            </div>
+            <div class="employer__error"></div>
           </div>
         </form>
       </div>
