@@ -41,10 +41,7 @@
 .employer__input:hover {
   background-color: #F9FAFF;
 }
-.employer__input:focus-visible,
-.employer__input:focus {
-  border-color: #A6ADFF;
-}
+
 .employer__fieldset-textarea {
   width: 100%;
 }
@@ -66,10 +63,18 @@
 .employer__textarea:hover {
   background-color: #F9FAFF;
 }
+
+.employer__input.invalid,
+.employer__textarea.invalid {
+  border-color: #f00;
+}
+.employer__input:focus-visible,
+.employer__input:focus,
 .employer__textarea:focus-visible,
 .employer__textarea:focus {
   border-color: #A6ADFF;
 }
+
 .employer__radio-buttons {
   display: grid;
   grid-template-columns: repeat(3, 280px);
@@ -83,9 +88,7 @@
 .employer__legend {
   margin-bottom: 12px;
 }
-.employer__legend--error {
-  color: #f00;
-}
+
 .employer__label-radio + .employer__label-radio {
   margin-top: 8px;
 }

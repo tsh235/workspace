@@ -1,4 +1,4 @@
-const API_URL = 'https://workspace-methed.vercel.app/';
+const API_URL = 'https://unique-citrine-silicon.glitch.me/';
 const LOCATION_URL = 'api/locations';
 const VACANCY_URL = 'api/vacancy';
 
@@ -31,6 +31,19 @@ const createCard = vacancy => `
     </ul>
   </article>
 `;
+
+const inputNumberController = () => {
+  const inputNumberElems = document.querySelectorAll('input[type="number"]');
+  inputNumberElems.forEach(input => {
+    let value = '';
+    input.addEventListener('input', (event) => {
+      if (isNaN(parseInt(event.data))) {
+        event.target.value = value;
+      }
+      value = event.target.value;
+    });
+  });
+};
 
 const createCards = (data) => 
   data.vacancies.map(vacancy => {
@@ -258,8 +271,12 @@ const init = () => {
   try {
     const validationForm = (form) => {
       const validate = new JustValidate(form, {
-        errorFieldCssClass: ['employer__input--error'],
-        errorsContainer: document.querySelector('.employer__error'),
+        errorLabelStyle: {color: '#f00',},
+        errorFieldStyle: {borderColor: '#f00',},
+        errorFieldCssClass: ['invalid'],
+        tooltip: {
+          position: 'top',
+        }
       });
 
       validate
@@ -309,7 +326,11 @@ const init = () => {
         .addField('#email', [
           {
             rule: 'required',
-            errorMessage: 'Заполните email',
+            errorMessage: 'Введите email',
+          },
+          {
+            rule: 'email',
+            errorMessage: 'Введите корректный email',
           }
         ])
         .addField('#description', [
@@ -321,6 +342,8 @@ const init = () => {
         .addRequiredGroup('#fotmat', 'Выберите формат')
         .addRequiredGroup('#experience', 'Выберите опыт')
         .addRequiredGroup('#type', 'Выберите занятость');
+
+      return validate;
     };
 
     const fileController = () => {
@@ -345,11 +368,35 @@ const init = () => {
 
     const formController = () => {
       const form = document.querySelector('.employer__form');
-
-      validationForm(form);
+      const employerError = document.querySelector('.employer__error');
+      const validate = validationForm(form);
       
-      form.addEventListener('submit', (event) => {
+      form.addEventListener('submit', async (event) => {
         event.preventDefault();
+
+        if (!validate.isValid) {
+          employerError.innerHTML = '<p>Заполните все поля корректно</p>';
+          return;
+        }
+
+        try {
+          const formData = new FormData(form);
+
+          employerError.textContent = 'Оптравка вакансии, подождите...';
+
+          const response = await fetch(`${API_URL}${VACANCY_URL}`, {
+            method: 'POST',
+            body: formData,
+          });
+
+          if (response.ok) {
+            employerError.textContent = '';
+            window.location.href = 'index.html';
+          }
+        } catch (error) {
+          employerError.textContent = 'Произошла ошибка, повторите отправку.';
+          console.error(error);
+        }
       });
     };
     
@@ -359,6 +406,8 @@ const init = () => {
   } catch (error) {
     console.warn('Мы не на странице работодателя');
   }
+
+  inputNumberController();
 };
 
 init();
