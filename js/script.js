@@ -37,7 +37,7 @@ const inputNumberController = () => {
   inputNumberElems.forEach(input => {
     let value = '';
     input.addEventListener('input', (event) => {
-      if (isNaN(parseInt(event.data))) {
+      if (isNaN(parseInt(event.data)) && event.data !== null) {
         event.target.value = value;
       }
       value = event.target.value;
@@ -264,9 +264,7 @@ const init = () => {
         lastUrl = urlWithParams;
       });
     });
-  } catch (error) {
-    console.warn('Мы не на главной странице');
-  }
+  } catch {}
 
   try {
     const validationForm = (form) => {
@@ -403,9 +401,7 @@ const init = () => {
     fileController();
     formController();
 
-  } catch (error) {
-    console.warn('Мы не на странице работодателя');
-  }
+  } catch {}
 
   inputNumberController();
 };
